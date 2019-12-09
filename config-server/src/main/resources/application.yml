@@ -1,5 +1,5 @@
 server:
-  port: 7788 #服务端口
+  port: 8091 #服务端口
 spring:
   application:
     name: config-server #指定服务名
@@ -9,10 +9,10 @@ spring:
         git: #配置git仓库地址
           uri: http://mobileapi.gree.com:3000/180465/spconfig.git
           search-paths:
-            - spconfig		#配置文件目录地址
-          username: 180465	#github账号（公有项目不需要设置）
-          password: 920515 	#github账号（公有项目不需要设置）
-          basedir: D:\180465IDEAL\testSpringCloud\testEureka\spconfig
+            - spconfig		        #配置文件目录地址
+          username: sddking	    #github账号（公有项目不需要设置）
+          password: Qwe!3201312	#github账号（公有项目不需要设置）
+          basedir: D:\IDEALProject\spconfig
       label: master	#分支名称
   rabbitmq: #RabbitMQ相关的配置
     host: 127.0.0.1
@@ -23,7 +23,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://zpc:123456@server1:8091/eureka/
+      defaultZone: http://zpc:123456@server1:8092/eureka/
     ###因为该应用为服务提供者，是eureka的一个客户端，需要注册到注册中心
     register-with-eureka: true
     ###是否需要从eureka上检索服务

@@ -12,6 +12,10 @@
         <module>eureka-server-1</module>
         <module>eureka-server-2</module>
         <module>config-server</module>
+        <module>ribbon</module>
+        <module>service-hellow-1</module>
+        <module>service-hellow-2</module>
+        <module>feign-service</module>
     </modules>
 
     <parent>

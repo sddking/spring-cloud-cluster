@@ -1,0 +1,16 @@
+###服务端口号
+server:
+  port: 8097
+###服务名称
+spring:
+  application:
+    name: feign-service
+#eureka server注册服务的信息和地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://zpc:123456@server1:8092/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}###${server.port} #指定实例id
