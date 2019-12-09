@@ -5,6 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server-1/eureka-server-1.iml" filepath="$PROJECT_DIR$/eureka-server-1/eureka-server-1.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server-2/eureka-server-2.iml" filepath="$PROJECT_DIR$/eureka-server-2/eureka-server-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feign-service/feign-service.iml" filepath="$PROJECT_DIR$/feign-service/feign-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ribbon/ribbon.iml" filepath="$PROJECT_DIR$/ribbon/ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-hellow-1/service-hellow-1.iml" filepath="$PROJECT_DIR$/service-hellow-1/service-hellow-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-hellow-2/service-hellow-2.iml" filepath="$PROJECT_DIR$/service-hellow-2/service-hellow-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-cluster.iml" filepath="$PROJECT_DIR$/spring-cloud-cluster.iml" />
     </modules>
   </component>
