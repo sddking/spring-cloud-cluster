@@ -7,9 +7,8 @@ spring:
     config:
       server:
         git: #配置git仓库地址
-          uri: http://mobileapi.gree.com:3000/180465/spconfig.git
-          search-paths:
-            - spconfig		        #配置文件目录地址
+          uri: git@github.com:sddking/spring-cloud-cluster.git
+          search-paths: common/config		        #配置文件目录地址
           username: sddking	    #github账号（公有项目不需要设置）
           password: Qwe!3201312	#github账号（公有项目不需要设置）
           basedir: D:\IDEALProject\spconfig
