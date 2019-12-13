@@ -16,6 +16,7 @@
         <module>service-hellow-1</module>
         <module>service-hellow-2</module>
         <module>feign-service</module>
+        <module>config-client</module>
     </modules>
 
     <parent>

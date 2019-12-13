@@ -1,18 +1,18 @@
-
 spring:
   application:
-    name: config-server #指定服务名
+    name: config-client
   cloud:
     config:
-      server:
-        git: #配置git仓库地址
-          uri: git@github.com:sddking/spring-cloud-cluster.git
-          search-paths: common/config		        #配置文件目录地址
-          username: sddking	    #github账号（公有项目不需要设置）
-          password: Qwe!3201312	#github账号（公有项目不需要设置）
-          basedir: D:\IDEALProject\spring-cloud-cluster
-      label: master	#分支名称
-  rabbitmq: #RabbitMQ相关的配置
+      discovery:
+        #开启通过服务访问config-server的功能
+        enabled: true
+        #指定配置中心注册到eureka的serviceId(即config-server的application-name)
+        service-id: config-server
+      #指定当前所属环境
+      pro: dev
+      #git仓库的分支
+      label: master
+  rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
