@@ -9,9 +9,9 @@ spring:
         #指定配置中心注册到eureka的serviceId(即config-server的application-name)
         service-id: config-server
       #指定当前所属环境
-      pro: dev
       #git仓库的分支
       label: master
+      profile: dev
   rabbitmq:
     host: 127.0.0.1
     port: 5672

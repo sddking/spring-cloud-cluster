@@ -1,4 +1,5 @@
-
+server:
+  port: 8091 #服务端口
 spring:
   application:
     name: config-server #指定服务名

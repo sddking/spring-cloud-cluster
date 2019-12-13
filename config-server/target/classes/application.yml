@@ -29,7 +29,7 @@ eureka:
     fetch-registry: true
   instance:
     instance-id: ${spring.application.name}###${server.port} #指定实例id
-management:
+management:   #SpringCloud 2.0.0版本以后暴露/bus-refresh接口
   endpoints:
     web:
       exposure:
