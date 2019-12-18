@@ -1,0 +1,32 @@
+###服务端口号
+server:
+  port: 8087
+###服务名称
+spring:
+  application:
+    name: service-turbine
+#eureka server注册服务的信息和地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://zpc:123456@server1:8092/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}###${server.port} #指定实例id
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+turbine:
+  app-config:  hystrix-dashboard,app-ribbon
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: hystrix.stream

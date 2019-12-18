@@ -5,6 +5,13 @@ server:
 spring:
   application:
     name: service-hi
+  zipkin:
+    base-url: http://localhost:8089/
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1.0
 #eureka server注册服务的信息和地址
 eureka:
   client:

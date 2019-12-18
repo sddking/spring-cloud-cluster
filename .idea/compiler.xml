@@ -14,9 +14,13 @@
         <module name="eurekaserver1" />
         <module name="eurekaserver2" />
         <module name="feign-service" />
+        <module name="hystrix-dashboard" />
         <module name="ribbon" />
         <module name="service-hellow-1" />
         <module name="service-hellow-2" />
+        <module name="service-turbine" />
+        <module name="springcloud-gateway" />
+        <module name="zipkin-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,11 +29,15 @@
       <module name="eureka-server-1" target="1.8" />
       <module name="eureka-server-2" target="1.8" />
       <module name="feign-service" target="1.8" />
+      <module name="hystrix-dashboard" target="1.8" />
       <module name="ribbon" target="1.8" />
       <module name="service-feign" target="1.8" />
       <module name="service-hellow-1" target="1.8" />
       <module name="service-hellow-2" target="1.8" />
+      <module name="service-turbine" target="1.8" />
       <module name="spring-cloud-cluster" target="1.8" />
+      <module name="springcloud-gateway" target="1.8" />
+      <module name="zipkin-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

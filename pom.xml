@@ -17,6 +17,10 @@
         <module>service-hellow-2</module>
         <module>feign-service</module>
         <module>config-client</module>
+        <module>zipkin-server</module>
+        <module>hystrix-dashboard</module>
+        <module>service-turbine</module>
+        <module>springcloud-gateway</module>
     </modules>
 
     <parent>
