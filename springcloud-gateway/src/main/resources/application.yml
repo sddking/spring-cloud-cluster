@@ -1,0 +1,62 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: service-gateway
+  profiles:
+    active: after_route
+  cloud:
+    gateway:
+     discovery:
+            locator:
+              enabled: true #表明gateway开启服务注册和发现的功能
+              lowerCaseServiceId: true #请求路径上的服务名配置为小写（因为服务注册的时候，向注册中心注册时将服务名转成大写的了）
+      ##Spring Cloud Gateway根据作用范围划分为GatewayFilter(需要通过spring.cloud.routes.filters
+      ##配置在具体路由下，只作用在当前路由上或通过spring.cloud.default-filters配置在全局，作用在所有路由上)
+      ##和GlobalFilter(全局过滤器，不需要在配置文件中配置，作用在所有的路由上，
+      ##最终通过GatewayFilterAdapter包装成GatewayFilterChain可识别的过滤器)
+      routes:
+      - id: after_route
+        uri: http://httpbin.org:80/get
+        filters:
+        #AddRequestHeader GatewayFilter Factory 添加请求头的filter工厂
+        - AddRequestHeader=X-Request-Foo, Bar
+        #RewritePath GatewayFilter Factory 重写路径的filter工厂 **Spring Cloud Gateway默认也提供了这样的功能，这个功能是Zuul没有的**
+        - RewritePath=/foo/(?<segment>.*), /$\{segment}
+        #***Spring Cloud Gateway支持自定义过滤器，详见filter包下面的实现GatewayFilter和Ordered2个接口***
+        #自定义GatewayFilterfactory
+        - RequestTime=false
+        predicates:
+        #After Route Predicate Factory 可配置一个时间，当请求的时间在配置时间之后，才交给 router去处理
+        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+        #Header Route Predicate Factory 需要2个参数，一个是header名，另外一个header值，该值可以是一个正则表达式
+        - Header=X-Request-Id, \d+
+        #Cookie Route Predicate Factory 需要2个参数，一个时cookie名字，另一个时值，可以为正则表达式。它用于匹配请求中，带有该名称的cookie和cookie匹配正则表达式的请求。
+        - Cookie=name, forezp
+        #Host Route Predicate Factory 需要一个参数即hostname，它可以使用. * 等去匹配host。
+        - Host=**.fangzhipeng.com
+        #Method Route Predicate Factory  需要一个参数，即请求的类型
+        - Method=GET
+        #Path Route Predicate Factory 需要一个参数: 一个spel表达式，应用匹配路径。
+        - Path=/foo/{segment}
+        #Query Route Predicate Factory 需要2个参数:一个参数名和一个参数值的正则表达式。
+        - Query=foo, ba.
+        #Query Route Predicate Factory也可以只填一个参数，填一个参数时，则只匹配参数名，即请求的参数中含有配置的参数名，则命中路由。
+        - Query=foo
+        #令牌桶限流算法
+        - name: RequestRateLimiter
+          args:
+           #KeyResolver需要实现resolve方法，比如根据Hostname进行限流，则需要用hostAddress去判断。
+           #实现完KeyResolver之后，需要将这个类的Bean注册到Ioc容器中。
+            key-resolver: '#{@hostAddrKeyResolver}' #限流键的解析器的bean名称
+            redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充的平均速率
+            redis-rate-limiter.burstCapacity: 3 #令牌桶总的容量
+  profiles: after_route
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://zpc:123456@server1:8092/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}###${server.port} #指定实例id
